@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { nanoid } from 'nanoid';
 import styles from './Form.module.css'
 
 const Form = ({ addTodo }) => {
@@ -9,21 +10,22 @@ const Form = ({ addTodo }) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefoult();
+        e.preventDefault()
         if (!value) {
             return alert('The field can not be empty')
         }
-
-        addTodo(value)
+        addTodo({text: value, id: nanoid(), complited: false})
         setValue('')
     }
+
+    console.log(typeof(''))
 
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Todo</h1>
             <form onSubmit={handleSubmit}>
                 <div className={styles.form}>
-            {value && <span className={styles.labelActiveForm}></span>}
+             <span className={styles.labelActiveForm} style={{visibility: value ? 'visible' : 'hidden' }}></span>
                 <input value={value} type="text" onChange={handleChange} className={styles.input} placeholder='create new todo'/>
                 </div>
             </form>
