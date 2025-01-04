@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
 import { useTodoContext } from '../context/context';
 import Form from '../components/Form/Form';
 import Container from '../components/Container/Container'
 import List from '../components/List/List';
+import SectionControl from '../components/SectionControl/SectionControl';
+
 
 import styles from './TodoList.module.css'
 
@@ -17,6 +18,7 @@ const TodoList = () => {
             <Form addTodo={handleAddTodo} />
            
             <List items={todos}  onComplited={handleComplited}/>
+            <SectionControl />
             </Container>
          
         </div>)

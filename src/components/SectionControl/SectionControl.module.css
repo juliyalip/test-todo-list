@@ -1,0 +1,41 @@
+.container {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--input-border-color);
+    background-color: var(--primary-background-color);
+    width: 100%;
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+
+
+.menuItem {
+    color: var(--secondary-text-color);
+    font-size: 0.8rem;
+}
+
+.container> :last-child {
+     margin-left: auto;
+     margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        font-size: 1rem;
+        padding: 18px 12px;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .menuItem {
+        font-size: 1rem;
+    }
+    .container> :last-child {
+        margin-left: auto;
+        margin-top: 0;
+   }
+
+ 
+}

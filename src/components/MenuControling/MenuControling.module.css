@@ -1,8 +1,44 @@
-.menuItem{
-    cursor: pointer;
-    color: var(--secondary-text-color);
+.container {
+    display: flex;
+    align-items: center;
 }
 
-.activeMenu{
+
+.containerAction {
+    display: flex;
+    margin: 0 0 0 auto;
+    font-size: 0.8rem;
+}
+
+.menuItem {
+    list-style: none;
+    cursor: pointer;
+    color: var(--secondary-text-color);
+    font-size: 0.8rem;
+}
+
+.menuItem:not(:last-child) {
+    margin-right: 10px;
+}
+
+
+
+.activeMenu {
     color: var(--primary-text-color);
+}
+
+@media screen and (min-width: 768px) {
+    .containerAction {
+        font-size: 1rem;
+        margin-left: 25px;
+
+    }
+
+    .menuItem {
+        font-size: 1rem;
+    }
+
+    .menuItem:not(:last-child) {
+        margin-right: 15px;
+    }
 }
