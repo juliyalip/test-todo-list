@@ -1,0 +1,8 @@
+.menuItem{
+    cursor: pointer;
+    color: var(--secondary-text-color);
+}
+
+.activeMenu{
+    color: var(--primary-text-color);
+}

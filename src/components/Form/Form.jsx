@@ -18,18 +18,16 @@ const Form = ({ addTodo }) => {
         setValue('')
     }
 
-    console.log(typeof(''))
-
     return (
-        <div className={styles.container}>
+        <>
             <h1 className={styles.title}>Todo</h1>
             <form onSubmit={handleSubmit}>
-                <div className={styles.form}>
+                <div className={`${styles.form}  ${value ? styles.activeForm : ''}`}>
              <span className={styles.labelActiveForm} style={{visibility: value ? 'visible' : 'hidden' }}></span>
                 <input value={value} type="text" onChange={handleChange} className={styles.input} placeholder='create new todo'/>
                 </div>
             </form>
-        </div>
+        </>
 
 
 

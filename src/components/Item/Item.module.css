@@ -7,10 +7,14 @@
  
    background-color: var(--primary-background-color);
    position: relative;
-}
+  }
 
 .checkbox{
     margin-right: 10px;
+}
+
+.label{
+    cursor: pointer;
 }
 
 .label::after{
@@ -25,4 +29,15 @@
 top: 50%;
 transform: translateY(-50%);
 left: 12px;
+
+
 }
+
+.checkbox:checked + .label::after{
+    background: linear-gradient(45deg, violet, lightblue)
+}
+
+.checkbox:checked + .label{
+    color: var(--complited-text-color);
+}
+

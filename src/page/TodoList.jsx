@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTodoContext } from '../context/context';
 import Form from '../components/Form/Form';
 import Container from '../components/Container/Container'
 import List from '../components/List/List';
@@ -7,17 +8,15 @@ import styles from './TodoList.module.css'
 
 const TodoList = () => {
 
-    const [todos, setTodos] = useState([])
+ const {todos, handleComplited, handleAddTodo } = useTodoContext()
 
-    const handleAddTodo = (newTodo) => {
-         setTodos(prevState => [...prevState, newTodo])
-    }
-
+  
     return (
         <div className={styles.banerHero}>
+             <Container>
             <Form addTodo={handleAddTodo} />
-            <Container>
-            <List items={todos}  onComplited={() =>{}}/>
+           
+            <List items={todos}  onComplited={handleComplited}/>
             </Container>
          
         </div>)
