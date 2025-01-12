@@ -31,6 +31,7 @@ const TodoListProvider = ({ children }) => {
         const filteredTodos = todos.filter(todo => todo.id !== id)
         setTodos(filteredTodos)
      setFormValue(editTodo.text)
+     setTodoId(editTodo.id)
     }
 
    const handleSubmit = e =>{
