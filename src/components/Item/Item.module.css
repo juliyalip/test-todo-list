@@ -32,15 +32,26 @@
     top: 50%;
     transform: translateY(-50%);
     left: 13px;
-}
+    }
 
 .checkbox:checked+.label::after {
-    background: linear-gradient(45deg, violet, rgb(8, 184, 242))
-}
+    background: linear-gradient(45deg, violet, rgb(8, 184, 242));
+ 
+   }
 
 .checkbox:checked+.label {
     color: var(--complited-text-color);
     text-decoration: line-through
+}
+
+.edit{
+    fill: var( --background-icon-color);
+width: 15px;
+margin-left: auto;
+cursor: pointer;
+@media screen and (min-width: 768px) {
+    width: 17px;
+}
 }
 
 @media screen and (min-width: 768px) {

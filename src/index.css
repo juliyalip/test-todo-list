@@ -5,7 +5,9 @@
   --complited-text-color: #7575759e;
   --input-border-color: #cccccc;
   --input-focus-color:#000000;
-  --title-text-color: #fafafa
+  --title-text-color: #fafafa;
+  --heavy-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --background-icon-color: #757575dd
   }
 
 

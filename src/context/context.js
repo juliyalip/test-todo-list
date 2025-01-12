@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState, useMemo } from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
+import { nanoid } from 'nanoid';
 export const TodoListContext = createContext();
 
 const TodoListProvider = ({ children }) => {
@@ -8,46 +8,48 @@ const TodoListProvider = ({ children }) => {
         return JSON.parse(window.localStorage.getItem("todos")) ?? []
     })
 
+      const [todoId, setTodoId] = useState(() => nanoid())
+      const [formValue, setFormValue] = useState('')
+
     useEffect(() => {
         window.localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
+
+   
+    const deleteComplitedTodos = () => {
+        setTodos(todos => todos.filter(todo => !todo.complited));
+    };
 
     const handleComplited = (id) => {
         setTodos(todos.map(todo =>
             todo.id === id ? { ...todo, complited: !todo.complited } : todo
         ));
     };
-    
 
+    const handleEditTodo = (id) => {
+        const editTodo = todos.find(todo => todo.id === id);
+        const filteredTodos = todos.filter(todo => todo.id !== id)
+        setTodos(filteredTodos)
+     setFormValue(editTodo.text)
+    }
 
-
-      const incompleteCount = useMemo(
-          () => {
-              return todos.filter(todo => !todo.complited).length;
-          },
-          [todos]
-      );
-
-      const complitedCount = useMemo(
-        () => todos.reduce(
-          (total, todo) => (todo.complited ? total + 1 : total),
-          0
-        ),
-        [todos]
-      );
-      
-
-    const handleAddTodo = (newTodo) => {
-        setTodos(prevState => [...prevState, newTodo])
+   const handleSubmit = e =>{
+    e.preventDefault()
+    if (!formValue) {
+        return alert('The field can not be empty')
+    }
+   const newTodo = {
+    text: formValue,
+    id: todoId,
+    complited: false
+   };
+   setTodos(prevState => [...prevState, newTodo])
+    setFormValue('');
+    setTodoId(nanoid())
    }
 
-   const deleteComplitedTodos = () => {
-    setTodos(todos => todos.filter(todo => !todo.complited));
-};
-
-
     return (
-        <TodoListContext.Provider value={{ todos, handleComplited, handleAddTodo , deleteComplitedTodos, incompleteCount, complitedCount}}>
+        <TodoListContext.Provider value={{ todos, handleComplited, handleEditTodo, deleteComplitedTodos, formValue , setFormValue, handleSubmit}}>
             {children}
         </TodoListContext.Provider>
     )

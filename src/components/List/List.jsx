@@ -1,22 +1,25 @@
+import { useTodoContext } from '../../context/context';
 import Item from '../Item/Item'
 import styles from './List.module.css'
 
-const List = ({ items,  onComplited}) => {
-    return (
-        items.length > 0 && (
-            <ul className={styles.container}>
-              {items.map((item) => (
-                <Item
-                  key={item.id}
-                  item={item} 
-                  onComplited={onComplited} 
-                />
-              ))}
-            </ul>
-          )
+const List = () => {
+
+  const { todos, handleComplited, handleEditTodo } = useTodoContext();
+
+  return (
+    todos.length > 0 && (
+      <ul className={styles.container}>
+        {todos.map((todo) => (
+          <Item
+            key={todo.id}
+            item={todo}
+            onComplited={handleComplited}
+            onEdit={handleEditTodo}
+          />
+        ))}
+      </ul>
     )
-
-
+  )
 }
 
 export default List

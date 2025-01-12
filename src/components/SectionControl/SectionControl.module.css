@@ -19,6 +19,7 @@
 .container> :last-child {
      margin-left: auto;
      margin-top: 10px;
+     cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -32,6 +33,7 @@
     .menuItem {
         font-size: 1rem;
     }
+
     .container> :last-child {
         margin-left: auto;
         margin-top: 0;

@@ -1,39 +1,28 @@
-import React, { useState } from 'react'
-import { nanoid } from 'nanoid';
+import React from 'react'
+import { useTodoContext } from '../../context/context';
 import styles from './Form.module.css'
 
-const Form = ({ addTodo }) => {
-    const [value, setValue] = useState('')
+const Form = () => {
 
-    const handleChange = e => {
-        setValue(e.target.value)
-    }
+    const { formValue, setFormValue, handleSubmit } = useTodoContext()
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if (!value) {
-            return alert('The field can not be empty')
-        }
-        addTodo({text: value, id: nanoid(), complited: false})
-        setValue('')
+    const handleChageFormValue = e => {
+        setFormValue(e.target.value)
     }
 
     return (
         <>
             <h1 className={styles.title}>Todo</h1>
             <form onSubmit={handleSubmit}>
-                <div className={`${styles.form}  ${value ? styles.activeForm : ''}`}>
-             <span className={styles.labelActiveForm} style={{visibility: value ? 'visible' : 'hidden' }}></span>
-                <input value={value} type="text" onChange={handleChange} className={styles.input} placeholder='create new todo'/>
+                <div className={`${styles.form}  ${formValue ? styles.activeForm : ''}`}>
+                    <span className={styles.labelActiveForm} style={{ opacity: formValue ? 1 : 0 }}></span>
+                    <input value={formValue} type="text" onChange={handleChageFormValue} className={styles.input} placeholder='create new todo' />
                 </div>
             </form>
         </>
 
-
-
     )
 }
-
 
 export default Form;
 

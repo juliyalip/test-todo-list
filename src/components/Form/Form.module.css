@@ -1,9 +1,14 @@
+form{
+  margin-bottom: 10px;
+}
+
 .form {
   background-color: var(--primary-background-color);
   border: 1px solid var(--input-border-color);
   width: 100%;
   padding-left: 12px;
   border-radius: 4px;
+  box-shadow: var(--heavy-shadow);
 }
 
 .input {
@@ -35,6 +40,7 @@
   border: 1px solid var(--input-border-color);
   vertical-align: middle;
   margin-right: 7px;
+  transition: opacity 250ms ease;
 }
 
 @media screen and (min-width: 768px) {
@@ -54,6 +60,6 @@
   }
 
   .activeForm {
-    border: 2px solid var(--input-focus-color);
+    border: 1px solid var(--input-focus-color);
   }
 }
